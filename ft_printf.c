@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/16 12:19:23 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/16 17:43:05 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	ft_identify(va_list	args, const char format)
 	if (format == 'c')
 		return (ft_printchar_fd(va_arg(args, int)));
 	if (format == 's')
-		return(ft_putstr(va_arg(args, char *)));
+		return (ft_printstr(va_arg(args, char *)));
 	if (format == 'p')
-		ft_putvoidtype((uintptr_t)va_arg(args, void *));
+		return (ft_printvoidtype((uintptr_t)va_arg(args, void *)));
 	if (format == 'd' || format == 'i')
-		hogehoge(va_arg(args, int));
+		return (ft_printnum(va_arg(args, int)));
 	if (format == 'u')
-		hogehoge(va_arg(args, unsigned int));
+		return (ft_printnbr_fd(va_arg(args, unsigned int), 1));
 	if (format == 'x' || format == 'X')
 		hogehoge(va_arg(args, unsigned int));
 	if (format == '%')
-		
+		return (write(1, "%", 1));
 	return (0);
 }
 
@@ -43,7 +43,6 @@ int	ft_printf(const char *input, ...)
 
 	i = 0;
 	va_start(args, input);
-	
 	while (input[i] != '\0')
 	{
 		if (*input == '%')

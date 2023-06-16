@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 21:44:33 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/15 21:08:34 by wrikuto          ###   ########.fr       */
+/*   Created: 2023/06/15 21:08:12 by wrikuto           #+#    #+#             */
+/*   Updated: 2023/06/15 21:26:58 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include<unistd.h>
 
-int	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c)
 {
-	return (write(fd, &c, 1));
+	return (write(1, &c, 1));
 }

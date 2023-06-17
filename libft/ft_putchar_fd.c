@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 21:44:33 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/15 21:08:34 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 13:26:16 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-int	ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	return (write(fd, &c, 1));
+	write(fd, &c, 1);
 }

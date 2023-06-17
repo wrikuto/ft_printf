@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/16 17:43:05 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 13:46:38 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_identify(va_list	args, const char format)
 	if (format == 'd' || format == 'i')
 		return (ft_printnum(va_arg(args, int)));
 	if (format == 'u')
-		return (ft_printnbr_fd(va_arg(args, unsigned int), 1));
+		return (ft_printnbr(va_arg(args, unsigned int), 1));
 	if (format == 'x' || format == 'X')
 		hogehoge(va_arg(args, unsigned int));
 	if (format == '%')

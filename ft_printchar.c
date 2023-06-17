@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 21:08:12 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/15 21:26:58 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 13:41:41 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
 
-int	ft_putchar_fd(char c)
+void	ft_putchar_fd(char c)
 {
 	return (write(1, &c, 1));
 }

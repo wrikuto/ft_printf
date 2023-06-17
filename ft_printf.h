@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:58:47 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/16 17:42:56 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 12:50:12 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 int	ft_printchar_fd(char c);
 int	ft_printstr(char *input);
 int	ft_printvoidtype(char *input);
-int	ft_printnbr_fd(unsigned int n, int fd);
+int	ft_printnbr(unsigned int n);
+
 
 
 #endif

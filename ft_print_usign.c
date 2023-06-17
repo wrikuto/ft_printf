@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:13:16 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/16 18:21:03 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 13:41:32 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static	int	ft_numdigit(unsigned int n)
 	return (i);
 }
 
-static	int	ft_power(int base, int exp)
+static	unsigned int	ft_power(unsigned int base, unsigned int exp)
 {
-	int	i;
-	int	result;
+	unsigned int	i;
+	unsigned int	result;
 
 	result = 1;
 	if (base == 0 && exp < 0)
@@ -47,26 +47,39 @@ static	int	ft_power(int base, int exp)
 	return (result);
 }
 
-int	ft_printnbr_fd(unsigned int n, int fd)
+int	ft_printnbr(unsigned int n)
 {
-	int		nb;
 	int		i;
 	int		res;
+	char	c;
 
 	res = 0;
 	i = ft_numdigit(n);
+	res = i;
 	if (n == 0)
-		ft_putchar_fd('0', fd);
+	{
+		write(1, "0", 1);
+		return (1);
+	}
 	else
 	{
 		while (i > 0)
 		{
-			nb = (n / ft_power(10, i - 1));
-			ft_putchar_fd((nb / ft_power(10, i - 1)) + '0', fd);
-			nb = nb % ft_power(10, i - 1);
+			c = (int)(n / ft_power(10, i - 1)) + '0';
+			write(1, &c, 1);
+			n = n % ft_power(10, i - 1);
 			i--;
-			res++;
 		}
 	}
 	return (res);
+}
+
+#include<stdio.h>
+
+int main() {
+    int num = 0;
+    int printed = ft_printnbr(num);
+    printf("\nNumber of digits printed: %d\n", printed);
+    
+    return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/16 17:06:27 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 13:51:00 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ int	ft_printnum(int input)
 	return (len);
 }
 
+#include <stdio.h>
 
+int main()
+{
+	int i = 1;
+	int res;
 
-// int ft_put
+	res = 0;
+	res = ft_printnum(i);
+	return (0);
+	
+}

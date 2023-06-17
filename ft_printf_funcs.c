@@ -6,16 +6,17 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/17 13:51:00 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/17 21:21:46 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-int	ft_printstr(char *input)
+int	ft_print_str(char *input)
 {
 	size_t	i;
 
+	i = 0;
 	while (input[i] != '\0')
 	{
 		write(1, &input, 1);
@@ -24,10 +25,11 @@ int	ft_printstr(char *input)
 	return (i);
 }
 
-int	ft_printvoidtype(char *input)
+int	ft_print_voidtype(char *input)
 {
 	size_t	i;
 
+	i = 0;
 	if (input == NULL)
 		return (write(1, "null", 4));
 	while (input[i] != '\0')
@@ -38,27 +40,26 @@ int	ft_printvoidtype(char *input)
 	return (i);
 }
 
-int	ft_printnum(int input)
-{
-	int		len;
-	char	*print;
+// int	ft_printnum(int input)
+// {
+// 	int		len;
+// 	char	*print;
 
-	len = 0;
-	print = ft_itoa(input);
-	len = ft_printstr(print);
-	free(print);
-	return (len);
-}
+// 	len = 0;
+// 	print = ft_itoa(input);
+// 	len = ft_printstr(print);
+// 	free(print);
+// 	return (len);
+// }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main()
-{
-	int i = 1;
-	int res;
+// int main()
+// {
+// 	int i = 1;
+// 	int res;
 
-	res = 0;
-	res = ft_printnum(i);
-	return (0);
-	
-}
+// 	res = 0;
+// 	res = ft_printnum(i);
+// 	return (0);
+// }

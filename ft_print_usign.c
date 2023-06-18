@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:13:16 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/17 21:19:07 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/18 13:11:57 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-static	int	ft_usign_numdigit(unsigned int n)
+static	int	ft_numdigit(unsigned int n)
 {
 	unsigned int	num;
 	int				i;
@@ -27,7 +27,7 @@ static	int	ft_usign_numdigit(unsigned int n)
 	return (i);
 }
 
-static	unsigned int	ft_usign_power(unsigned int base, unsigned int exp)
+static	unsigned int	ft_power(unsigned int base, unsigned int exp)
 {
 	unsigned int	i;
 	unsigned int	result;
@@ -47,14 +47,14 @@ static	unsigned int	ft_usign_power(unsigned int base, unsigned int exp)
 	return (result);
 }
 
-int	ft_print_usign(unsigned int n)
+int	ft_printnbr(unsigned int n)
 {
 	int		i;
 	int		res;
 	char	c;
 
 	res = 0;
-	i = ft_usign_numdigit(n);
+	i = ft_numdigit(n);
 	res = i;
 	if (n == 0)
 	{
@@ -65,20 +65,21 @@ int	ft_print_usign(unsigned int n)
 	{
 		while (i > 0)
 		{
-			c = (int)(n / ft_usign_power(10, i - 1)) + '0';
+			c = (int)(n / ft_power(10, i - 1)) + '0';
 			write(1, &c, 1);
-			n = n % ft_usign_power(10, i - 1);
+			n = n % ft_power(10, i - 1);
 			i--;
 		}
 	}
 	return (res);
 }
 
-// #include<stdio.h>
+#include<stdio.h>
 
-// int main() {
-//     int num = 0;
-//     int printed = ft_printnbr(num);
-//     printf("\nNumber of digits printed: %d\n", printed);
-//     return 0;
-// }
+int main() {
+    int num = 0;
+    int printed = ft_printnbr(num);
+    printf("\nNumber of digits printed: %d\n", printed);
+
+    return 0;
+}

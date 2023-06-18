@@ -40,18 +40,6 @@ int	ft_print_voidtype(char *input)
 	return (i);
 }
 
-// int	ft_printnum(int input)
-// {
-// 	int		len;
-// 	char	*print;
-
-// 	len = 0;
-// 	print = ft_itoa(input);
-// 	len = ft_printstr(print);
-// 	free(print);
-// 	return (len);
-// }
-
 // #include <stdio.h>
 
 // int main()

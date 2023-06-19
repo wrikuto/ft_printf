@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:13:16 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/18 13:11:57 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 02:41:55 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static	unsigned int	ft_power(unsigned int base, unsigned int exp)
 	return (result);
 }
 
-int	ft_printnbr(unsigned int n)
+int	ft_print_u(unsigned int n)
 {
 	int		i;
 	int		res;
@@ -74,12 +74,12 @@ int	ft_printnbr(unsigned int n)
 	return (res);
 }
 
-#include<stdio.h>
+// #include<stdio.h>
 
-int main() {
-    int num = 0;
-    int printed = ft_printnbr(num);
-    printf("\nNumber of digits printed: %d\n", printed);
+// int main() {
+//     int num = 0;
+//     int printed = ft_printnbr(num);
+//     printf("\nNumber of digits printed: %d\n", printed);
 
-    return 0;
-}
+//     return 0;
+// }

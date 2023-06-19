@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_print_num.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/03 13:06:21 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/05 14:28:55 by wrikuto          ###   ########.fr       */
+/*   Created: 2023/06/17 18:14:23 by wrikuto           #+#    #+#             */
+/*   Updated: 2023/06/20 02:40:46 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include"ft_printf.h"
 
-static	int	ft_count_digits(int n)
+static	int	ft_numdigit(int n)
 {
 	int	num;
 	int	i;
@@ -27,10 +27,10 @@ static	int	ft_count_digits(int n)
 	return (i);
 }
 
-static	int	ft_pow(int base, int exp)
+static	int	ft_power(unsigned int base, unsigned int exp)
 {
-	int	i;
-	int	result;
+	unsigned int	i;
+	unsigned int	result;
 
 	result = 1;
 	if (base == 0 && exp < 0)
@@ -47,35 +47,38 @@ static	int	ft_pow(int base, int exp)
 	return (result);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_print_d(int n)
 {
-	long int		nb;
-	int				i;
+	int		i;
+	int		res;
+	char	c;
 
-	nb = n;
+	res = 0;
+	i = ft_numdigit(n);
+	res = i;
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
-		nb = -nb;
+		write(1, "-", 1);
+		n = -n;
+		res++;
 	}
-	i = ft_count_digits(n);
 	if (n == 0)
-		ft_putchar_fd('0', fd);
-	else
+		return (write(1, "0", 1));
+	while (i > 0)
 	{
-		while (i > 0)
-		{
-			ft_putchar_fd((nb / ft_pow(10, i - 1)) + '0', fd);
-			nb = nb % ft_pow(10, i - 1);
-			i--;
-		}
+		c = (n / ft_power(10, i - 1)) + '0';
+		write(1, &c, 1);
+		n = n % ft_power(10, i - 1);
+		i--;
 	}
+	return (res);
 }
 
-// int	main(void)
-// {
-//     int num = -2147483648;
-//     int fd = 1;
-//     ft_putnbr_fd(num, fd);
+// #include<stdio.h>
+
+// int main() {
+//     int num = 23423245;
+//     int printed = ft_printnbr(num);
+//     printf("\nNumber of digits printed: %d\n", printed);
 //     return 0;
 // }

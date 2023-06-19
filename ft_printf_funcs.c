@@ -6,13 +6,21 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/17 21:21:46 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 02:41:38 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-int	ft_print_str(char *input)
+void	ft_print_c(int n)
+{
+	char	c;
+
+	c = n + '0';
+	write(1, &c, 1);
+}
+
+int	ft_print_s(char *input)
 {
 	size_t	i;
 
@@ -25,7 +33,7 @@ int	ft_print_str(char *input)
 	return (i);
 }
 
-int	ft_print_voidtype(char *input)
+int	ft_print_p(char *input)
 {
 	size_t	i;
 

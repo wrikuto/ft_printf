@@ -6,12 +6,11 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/17 13:46:38 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 02:45:58 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
-
 
 
 int	ft_identify(va_list	args, const char format)
@@ -19,17 +18,17 @@ int	ft_identify(va_list	args, const char format)
 	int	n;
 
 	if (format == 'c')
-		return (ft_printchar_fd(va_arg(args, int)));
+		return (ft_print_c(va_arg(args, int)));
 	if (format == 's')
-		return (ft_printstr(va_arg(args, char *)));
+		return (ft_print_s(va_arg(args, char *)));
 	if (format == 'p')
-		return (ft_printvoidtype((uintptr_t)va_arg(args, void *)));
+		return (ft_print_p((uintptr_t)va_arg(args, void *)));
 	if (format == 'd' || format == 'i')
-		return (ft_printnum(va_arg(args, int)));
+		return (ft_print_d(va_arg(args, int)));
 	if (format == 'u')
-		return (ft_printnbr(va_arg(args, unsigned int), 1));
+		return (ft_print_u(va_arg(args, unsigned int), 1));
 	if (format == 'x' || format == 'X')
-		hogehoge(va_arg(args, unsigned int));
+		return (ft_print_x(va_arg(args, unsigned int),format));
 	if (format == '%')
 		return (write(1, "%", 1));
 	return (0);

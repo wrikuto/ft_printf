@@ -6,14 +6,14 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 02:45:58 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:18:54 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
 
-int	ft_identify(va_list	args, const char format)
+static	int	ft_identify(va_list	args, const char format)
 {
 	int	n;
 

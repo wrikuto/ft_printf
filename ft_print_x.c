@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 23:41:03 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 14:49:15 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:24:28 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-static	int	ft_0xdigit (unsigned int n)
+static	int	ft_0xdigit(unsigned int n)
 {
 	int		dig;
 
@@ -25,11 +25,15 @@ static	int	ft_0xdigit (unsigned int n)
 	return (dig);
 }
 
-static	int	ft_print_x (unsigned int n, char format)
+int	ft_print_x(unsigned int n, char format)
 {
 	char	c;
+	int		dig;
 
-	if (num >= 16)
+	dig = ft_0xdigit(n);
+	if (n == 0)
+		return (write(1, "0", 1));
+	if (n >= 16)
 	{
 		ft_print0x(n / 16, format);
 		ft_print0x(n % 16, format);
@@ -46,5 +50,6 @@ static	int	ft_print_x (unsigned int n, char format)
 				ft_printchar((n - 10) + 'A');
 		}
 	}
+	return (dig);
 }
 

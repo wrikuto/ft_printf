@@ -6,12 +6,11 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 15:18:54 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 19:47:22 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
-
 
 static	int	ft_identify(va_list	args, const char format)
 {
@@ -26,9 +25,9 @@ static	int	ft_identify(va_list	args, const char format)
 	if (format == 'd' || format == 'i')
 		return (ft_print_d(va_arg(args, int)));
 	if (format == 'u')
-		return (ft_print_u(va_arg(args, unsigned int), 1));
+		return (ft_print_u(va_arg(args, unsigned int)));
 	if (format == 'x' || format == 'X')
-		return (ft_print_x(va_arg(args, unsigned int),format));
+		return (ft_print_x(va_arg(args, unsigned int), format));
 	if (format == '%')
 		return (write(1, "%", 1));
 	return (0);

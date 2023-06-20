@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 23:41:03 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 03:08:01 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 13:11:45 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ static	int	ft_print_x (unsigned int n, char format)
 	}
 }
 
-//Surfi89

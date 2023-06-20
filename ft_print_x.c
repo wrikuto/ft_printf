@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 23:41:03 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 13:11:45 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 14:49:15 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static	int	ft_print_x (unsigned int n, char format)
 		else
 		{
 			if (format == 'x')
-				ft_printchar((n - 10) + 'a')
+				ft_printchar((n - 10) + 'a');
 			if (format == 'X')
-				ft_printchar((n - 10) + 'A')
+				ft_printchar((n - 10) + 'A');
 		}
 	}
 }

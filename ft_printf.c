@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 19:47:22 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 20:52:09 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	int	ft_identify(va_list	args, const char format)
 	int	n;
 
 	if (format == 'c')
-		return (ft_print_c(va_arg(args, int)));
+		return (ft_print_c(va_arg(args, char)));
 	if (format == 's')
 		return (ft_print_s(va_arg(args, char *)));
 	if (format == 'p')
@@ -40,15 +40,16 @@ int	ft_printf(const char *input, ...)
 	va_list		args;
 
 	i = 0;
+	len = 0;
 	va_start(args, input);
 	while (input[i] != '\0')
 	{
-		if (*input == '%')
-			len = len + ft_identify(args, *input);
+		if (input[i] == '%')
+			len = len + ft_identify(args, input[i + 1]);
 		else
-			write(1, &input[i], 1);
+			len++;
 		i++;
-		len++;
 	}
-	return (0);
+	va_end(args);
+	return (len);
 }

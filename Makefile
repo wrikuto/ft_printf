@@ -1,7 +1,5 @@
 NAME = libftprintf.a
 SRCS = \
-        ft_change_base.c \
-        ft_count_output.c \
         ft_print_d.c \
         ft_print_u.c \
         ft_print_x.c \

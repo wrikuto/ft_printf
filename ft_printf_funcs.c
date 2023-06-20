@@ -6,17 +6,19 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 02:41:38 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 20:59:23 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-void	ft_print_c(int n)
+int	ft_print_c(int c)
 {
-	char	c;
+	return (write(1, &c, 1));
+}
 
-	c = n + '0';
+void	ft_putchar(char c)
+{
 	write(1, &c, 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 18:58:47 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 21:12:28 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 21:36:42 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 #include<string.h>
 #include<stdlib.h>
 #include<stdarg.h>
-// #include<limits.h>
+#include<stdint.h>
 
-int		ft_print_c(int n);
-void	ft_putchar(char c);
+int		ft_print_c(char c);
 int		ft_print_s(char *input);
 int		ft_print_p(char *input);
 int		ft_print_d(int n);

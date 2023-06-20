@@ -6,20 +6,15 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 20:59:23 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/20 21:37:14 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-int	ft_print_c(int c)
+int	ft_print_c(char c)
 {
 	return (write(1, &c, 1));
-}
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
 }
 
 int	ft_print_s(char *input)

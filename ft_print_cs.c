@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_funcs.c                                  :+:      :+:    :+:   */
+/*   ft_print_cs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 21:37:14 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/21 22:13:31 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,6 @@ int	ft_print_s(char *input)
 	size_t	i;
 
 	i = 0;
-	while (input[i] != '\0')
-	{
-		write(1, &input, 1);
-		i++;
-	}
-	return (i);
-}
-
-int	ft_print_p(char *input)
-{
-	size_t	i;
-
-	i = 0;
-	if (input == NULL)
-		return (write(1, "null", 4));
 	while (input[i] != '\0')
 	{
 		write(1, &input, 1);

@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 23:41:03 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/21 18:19:19 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/21 22:13:07 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_print_x(unsigned int n, char format)
 {
 	int		dig;
 
-	dig = ft_0xdigit(n);
 	if (n == 0)
 		return (write(1, "0", 1));
 	if (n >= 16)
@@ -49,7 +48,7 @@ int	ft_print_x(unsigned int n, char format)
 				ft_print_c((n - 10) + 'A');
 		}
 	}
-	return (dig);
+	return (ft_0xdigit(n));
 }
 
 // #include <limits.h>
@@ -59,11 +58,9 @@ int	ft_print_x(unsigned int n, char format)
 // 	printf("%x\n", -1);
 // 	ft_print_x(-1, 'x');
 // 	printf("\n");
-	
 // 	printf("%x\n", 0);
 // 	ft_print_x(0, 'x');
 // 	printf("\n");
-	
 // 	printf("%x\n", INT_MAX);
 // 	ft_print_x(INT_MAX, 'x');
 // 	printf("\n");

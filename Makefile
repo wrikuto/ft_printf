@@ -1,10 +1,11 @@
 NAME = libftprintf.a
 SRCS = \
+        ft_print_cs.c \
         ft_print_d.c \
+        ft_print_p.c \
         ft_print_u.c \
         ft_print_x.c \
-        ft_printf.c \
-        ft_printf_funcs.c
+        ft_printf.c
 
 OBJS        =   $(SRCS:.c=.o)
 CC = cc

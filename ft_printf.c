@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/21 21:40:29 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/21 22:21:14 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static	int	ft_identify(va_list	args, const char format)
 {
 	if (format == 'c')
-		return (ft_print_c(va_arg(args, char)));
+		return (ft_print_c(va_arg(args, int)));
 	if (format == 's')
 		return (ft_print_s(va_arg(args, char *)));
 	if (format == 'p')

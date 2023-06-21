@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 23:41:03 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 21:33:00 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/21 18:19:19 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,28 @@ int	ft_print_x(unsigned int n, char format)
 	return (dig);
 }
 
-
-// #include<stdio.h>
-
-// int main(void)
+// #include <limits.h>
+// #include <stdio.h>
+// int main()
 // {
-// 	int i;
-// 	unsigned int num1 = 12345;
-// 	unsigned int num2 = 0;
-// 	unsigned int num3 = 254;
-// 	char format1 = 'x';
-// 	char format2 = 'X';
+// 	printf("%x\n", -1);
+// 	ft_print_x(-1, 'x');
+// 	printf("\n");
+	
+// 	printf("%x\n", 0);
+// 	ft_print_x(0, 'x');
+// 	printf("\n");
+	
+// 	printf("%x\n", INT_MAX);
+// 	ft_print_x(INT_MAX, 'x');
+// 	printf("\n");
 
-// 	i = ft_print_x(num1, format1);
-// 	printf("\nexpect: 4, return dig is %d\n", i);
-// 	ft_print_x(num1, format2);
-// 	write(1, "\n", 1);
+// 	printf("%x\n", INT_MIN);
+// 	ft_print_x(INT_MIN, 'x');
+// 	printf("\n");
 
-// 	ft_print_x(num2, format1);
-// 	write(1, "\n", 1);
-// 	ft_print_x(num2, format2);
-// 	write(1, "\n", 1);
+// 	printf("%x\n", UINT_MAX);
+// 	ft_print_x(UINT_MAX, 'x');
+// 	printf("\n");
 
-// 	ft_print_x(num3, format1);
-// 	write(1, "\n", 1);
-// 	ft_print_x(num3, format2);
-// 	write(1, "\n", 1);
-// 	i = ft_print_x(num3, format1);
-// 	return (0);
 // }

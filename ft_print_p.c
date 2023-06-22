@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 21:38:14 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/21 22:13:15 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/22 17:49:12 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,46 @@ static	int	ft_digit_p(uintptr_t n)
 {
 	int		dig;
 
+	if (n == 0)
+		return (3);
 	dig = 0;
 	while (n != 0)
 	{
 		n = n / 16;
 		dig++;
 	}
-	return (dig);
+	return (dig + 2);
 }
 
-static	void	ft_put_ptr(uintptr_t n)
+static	void	ft_put_ptr(uintptr_t n, ssize_t *ret)
 {
 	if (n >= 16)
 	{
-		ft_put_ptr(n / 16);
-		ft_put_ptr(n % 16);
+		ft_put_ptr((n / 16), ret);
+		ft_put_ptr((n % 16), ret);
 	}
 	else
 	{
 		if (n < 10)
-			ft_print_c(n + '0');
+			*ret = *ret + ft_print_c(n + '0');
 		else
-			ft_print_c((n - 10) + 'a');
+			*ret = *ret + ft_print_c((n - 10) + 'a');
 	}
 }
 
-int	ft_print_p(uintptr_t n)
+ssize_t	ft_print_p(uintptr_t n)
 {
-	write(1, "0x", 2);
+	ssize_t	ret;
+
+	ret = 0;
+	ret = ret + write(1, "0x", 2);
 	if (n == 0)
-		return (write(1, "0", 1) + 2);
-	ft_put_ptr(n);
-	return (ft_digit_p(n) + 2);
+		ret = ret + write(1, "0", 1);
+	else if (n != 0)
+		ft_put_ptr(n, &ret);
+	if (ret == ft_digit_p(n))
+		return (ret);
+	return (-1);
 }
 
 // int main()

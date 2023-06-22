@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 18:14:23 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/22 14:20:49 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/22 17:49:11 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static	int	ft_numdigit(int n)
 
 	i = 0;
 	num = n;
+	if (n < 0)
+		i++;
 	while (num != 0)
 	{
 		num = num / 10;
@@ -47,32 +49,33 @@ static	int	ft_power(unsigned int base, unsigned int exp)
 	return (result);
 }
 
-int	ft_print_d(int n)
+ssize_t	ft_print_d(long int n)
 {
 	int			i;
-	long int	lng;
 	int			res;
 	char		c;
+	ssize_t		w_ret;
 
-	lng = n;
-	i = ft_numdigit(n);
-	res = i;
-	if (lng < 0)
+	w_ret = 0;
+	res = ft_numdigit(n);
+	i = res - (n < 0);
+	if (n < 0)
 	{
-		write(1, "-", 1);
-		lng = -lng;
-		res++;
+		w_ret = w_ret + write(1, "-", 1);
+		n = -n;
 	}
-	if (lng == 0)
+	if (n == 0)
 		return (write(1, "0", 1));
 	while (i > 0)
 	{
-		c = (lng / ft_power(10, i - 1)) + '0';
-		write(1, &c, 1);
-		lng = lng % ft_power(10, i - 1);
+		c = (n / ft_power(10, i - 1)) + '0';
+		w_ret = w_ret + write(1, &c, 1);
+		n = n % ft_power(10, i - 1);
 		i--;
 	}
-	return (res);
+	if (w_ret == res)
+		return (w_ret);
+	return (-1);
 }
 
 // #include<stdio.h>

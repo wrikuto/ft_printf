@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_usign.c                                   :+:      :+:    :+:   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:13:16 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/20 02:41:55 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:03:25 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,31 @@ static	unsigned int	ft_power(unsigned int base, unsigned int exp)
 	return (result);
 }
 
-int	ft_print_u(unsigned int n)
+ssize_t	ft_print_u(unsigned int n)
 {
-	int		i;
-	int		res;
-	char	c;
+	int			i;
+	ssize_t		w_ret;
+	char		c;
+	ssize_t		res;
 
-	res = 0;
 	i = ft_numdigit(n);
 	res = i;
+	w_ret = 0;
 	if (n == 0)
-	{
-		write(1, "0", 1);
-		return (1);
-	}
+		return (write(1, "0", 1));
 	else
 	{
 		while (i > 0)
 		{
-			c = (int)(n / ft_power(10, i - 1)) + '0';
-			write(1, &c, 1);
+			c = (n / ft_power(10, i - 1)) + '0';
+			w_ret = w_ret + write(1, &c, 1);
 			n = n % ft_power(10, i - 1);
 			i--;
 		}
 	}
-	return (res);
+	if (w_ret == res)
+		return (w_ret);
+	return (-1);
 }
 
 // #include<stdio.h>

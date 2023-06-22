@@ -6,30 +6,35 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/21 22:40:29 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/22 17:51:15 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-int	ft_print_c(char c)
+static	size_t	ft_strlen(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+ssize_t	ft_print_c(char c)
 {
 	return (write(1, &c, 1));
 }
 
-int	ft_print_s(char *input)
+ssize_t	ft_print_s(char *input)
 {
 	size_t	i;
 
 	i = 0;
 	if (!input)
 		return (write(1, "(null)", 6));
-	while (input[i] != '\0')
-	{
-		write(1, &input[i], 1);
-		i++;
-	}
-	return (i);
+	return (write(1, input, ft_strlen(input)));
 }
 
 // #include <stdio.h>

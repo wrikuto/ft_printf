@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:39:32 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/21 22:21:14 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:05:09 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-static	int	ft_identify(va_list	args, const char format)
+static	ssize_t	ft_identify(va_list	args, const char format)
 {
 	if (format == 'c')
 		return (ft_print_c(va_arg(args, int)));
@@ -34,23 +34,26 @@ static	int	ft_identify(va_list	args, const char format)
 int	ft_printf(const char *input, ...)
 {
 	size_t		i;
-	size_t		len;
+	ssize_t		len;
+	ssize_t		w_ret;
 	va_list		args;
 
 	i = 0;
 	len = 0;
 	va_start(args, input);
-	while (input[i] != '\0')
+	while (input[i] != '\0' && len >= 0)
 	{
 		if (input[i] == '%')
-		{
-			len = len + ft_identify(args, input[i + 1]);
-			i++;
-		}
+			w_ret = ft_identify(args, input[++i]);
 		else
-			len = len + write(1, &input[i], 1);
+			w_ret = write(1, &input[i], 1);
+		len = len + w_ret;
+		if (w_ret < 0)
+			len = -1;
 		i++;
 	}
 	va_end(args);
+	if (len < 0 || len >= INT_MAX)
+		return (-1);
 	return (len);
 }

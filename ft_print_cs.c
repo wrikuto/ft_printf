@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:20:09 by wrikuto           #+#    #+#             */
-/*   Updated: 2023/06/22 17:51:15 by wrikuto          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:24:52 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ ssize_t	ft_print_c(char c)
 
 ssize_t	ft_print_s(char *input)
 {
-	size_t	i;
-
-	i = 0;
 	if (!input)
 		return (write(1, "(null)", 6));
 	return (write(1, input, ft_strlen(input)));

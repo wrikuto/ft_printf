@@ -1,6 +1,7 @@
 NAME	=	philo
 
 SRCS	=	./src/main.c \
+			./src/prepare_party.c\
 			./src/ft_atoi.c \
 			./src/philo.c \
 			./src/mutex.c \
@@ -12,8 +13,8 @@ SRCS	=	./src/main.c \
 
 CC		= cc
 INC	=	../inc/
-# FLAGS	= -Wall -Wextra -Werror -fsanitize=thread -g -I$(INC)
-FLAGS	= -Wall -Wextra -Werror -I$(INC)
+FLAGS	= -Wall -Wextra -Werror -fsanitize=thread -g -I$(INC)
+# FLAGS	= -Wall -Wextra -Werror -I$(INC)
 RM		= rm -rf
 
 OBJS_PATH = ./objs/
@@ -21,6 +22,7 @@ SRCS_PATH = ./src/
 # OBJS = ${SRCS:%.c=%.o}
 
 SRCS_FILES =	main.c \
+			prepare_party.c \
 			ft_atoi.c \
 			philo.c \
 			mutex.c \

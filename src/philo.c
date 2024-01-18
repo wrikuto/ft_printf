@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:03:14 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/18 11:30:56 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/18 17:31:54 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,16 @@ int	eating(t_philo *philo)
 	pthread_mutex_lock(&philo->tools->forks[r_fork]);
 	print_philo_status("has picked up a fork", philo->id, philo->tools, \
 				elapsed_time(philo->tools->start_time));
-		
 	pthread_mutex_lock(&philo->tools->forks[philo->id]);
 	print_philo_status("has picked up a fork", philo->id, philo->tools, \
 				elapsed_time(philo->tools->start_time));
-		
-	philo->time_last_meal = get_ms();
-
-	philo->c_meals--;
+	// philo->time_last_meal = get_ms();
+	set_m_t(philo);
+	if (0 < philo->tools->eat_up)
+		philo->c_meals--;
 	print_philo_status("is eating", philo->id, philo->tools,
 		elapsed_time(philo->tools->start_time));
-
 	ft_sleep(philo->tools->time_eat);
-
 	pthread_mutex_unlock(&philo->tools->forks[r_fork]);
 	pthread_mutex_unlock(&philo->tools->forks[philo->id]);
 	return (1);

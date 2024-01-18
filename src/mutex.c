@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 20:58:10 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/17 17:52:41 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/18 16:31:08 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,20 @@ void	change_end(t_tools *tools)
 	pthread_mutex_unlock(&tools->lock);
 }
 
+void	set_m_t(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->tools->eat);
+	philo->time_last_meal = get_ms();
+	pthread_mutex_unlock(&philo->tools->eat);
+}
+
 
 long	read_m_t(t_philo *philo)
 {
 	long	last_meal_time;
-
+	pthread_mutex_lock(&philo->tools->eat);
 	last_meal_time = philo->time_last_meal;
+	pthread_mutex_unlock(&philo->tools->eat);
+
 	return (last_meal_time);
 }

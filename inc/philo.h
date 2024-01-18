@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:49:15 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/18 14:53:33 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/18 17:27:42 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_tools
 	t_philo			*philo;
 	pthread_mutex_t	*forks; // フォークのミューテックス配列。各フォークにはミューテックスが割り当てられ、哲学者がフォークを使用する際にロック／アンロックを行う
 	pthread_mutex_t	lock; // ステータス情報のミューテックス。プログラムの状態を同期するために使用。
-	// pthread_mutex_t	meal_time; // 食事時間の管理に使用されるミューテックス。
+	pthread_mutex_t	eat; // 食事時間の管理に使用されるミューテックス。
 	bool			end;
 	long			start_time;
 	int				num_philo;
@@ -50,8 +50,8 @@ typedef struct s_tools
 }				t_tools;
 
 // prepare
-int	set_situation(char **arg, t_tools *tools);
-int	prepare_dinner_party(t_tools *tools);
+int		set_situation(char **arg, t_tools *tools);
+int		build_up(t_tools *tools);
 
 int		ft_atoi(const char *str);
 void	*philo_life(void *tmp);

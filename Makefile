@@ -5,11 +5,8 @@ SRCS	=	./src/main.c \
 			./src/ft_atoi.c \
 			./src/philo.c \
 			./src/mutex.c \
-			./src/track.c \
 			./src/time.c \
 			./src/utils.c
-
-
 
 CC		= cc
 INC	=	../inc/
@@ -19,31 +16,26 @@ RM		= rm -rf
 
 OBJS_PATH = ./objs/
 SRCS_PATH = ./src/
-# OBJS = ${SRCS:%.c=%.o}
 
 SRCS_FILES =	main.c \
 			prepare_party.c \
 			ft_atoi.c \
 			philo.c \
 			mutex.c \
-			track.c \
 			time.c \
 			utils.c
 
 OBJS = $(addprefix $(OBJS_PATH), $(SRCS_FILES:.c=.o))
 
-$(OBJS_PATH):
-	mkdir -p $@
-
-
-
 all:		$(NAME)
- 
-$(NAME): $(OBJS_PATH) $(OBJS)
+
+$(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
+	mkdir -p $(OBJS_PATH)
 	$(CC) $(FLAGS) -c $< -o $@
+
 clean:
 			rm -f $(OBJS)
 
@@ -53,3 +45,18 @@ fclean:		clean
 re:			fclean $(NAME)
 
 .PHONY:		all clean fclean re
+
+# ---
+
+# OBJS = $(addprefix $(OBJS_PATH), $(SRCS_FILES:.c=.o))
+
+# $(OBJS_PATH):
+# 	mkdir -p $@
+
+# all:		$(NAME)
+ 
+# $(NAME): $(OBJS_PATH) $(OBJS)
+# 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+
+# $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
+# 	$(CC) $(FLAGS) -c $< -o $@

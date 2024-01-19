@@ -6,40 +6,36 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:49:15 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/18 17:27:42 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 11:57:36 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 # include <stdio.h>
-#include <limits.h>
+# include <limits.h>
 # include <pthread.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
 # include <sys/time.h>
 
-// typedef struct s_philo	t_philo;
-// typedef struct s_data	t_data;
-
-
 typedef struct s_philo
 {
 	int				id;
-	pthread_t		thread; //哲学者に割り当てられたスレッド
-	long			time_last_meal; // 最後に食事をした時刻。
-	int				c_meals; // これまでに行った食事の回数。
-	struct s_tools	*tools; //共有リソースへのポインタ。哲学者がアクセスするフォークやステータス管理に関するリソースを含む可能性があります。
-
+	pthread_t		thread;
+	long			time_last_meal;
+	int				c_meals;
+	struct s_tools	*tools;
 }				t_philo;
 
 typedef struct s_tools
 {
 	t_philo			*philo;
-	pthread_mutex_t	*forks; // フォークのミューテックス配列。各フォークにはミューテックスが割り当てられ、哲学者がフォークを使用する際にロック／アンロックを行う
-	pthread_mutex_t	lock; // ステータス情報のミューテックス。プログラムの状態を同期するために使用。
-	pthread_mutex_t	eat; // 食事時間の管理に使用されるミューテックス。
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	lock;
+	pthread_mutex_t	eat;
+	pthread_mutex_t	decrease;
 	bool			end;
 	long			start_time;
 	int				num_philo;
@@ -60,7 +56,6 @@ int		join_threads(t_tools *tools);
 void	free_philo_and_forks(t_tools *tools);
 
 int		is_philo_dead(t_tools *tools);
-// void	track_philo_life(t_tools *tools);
 
 int		check_end(t_tools *tools);
 void	change_end(t_tools *tools);
@@ -75,8 +70,6 @@ long	get_ms(void);
 
 // utils
 void	print_philo_status(char *str, int id, t_tools *tools, long ms);
-
-
-
+int		ft_isdigit(int c);
 
 #endif

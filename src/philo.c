@@ -6,14 +6,12 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:03:14 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/18 17:31:54 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:01:58 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../inc/philo.h"
+#include "../inc/philo.h"
 
-// 概要: この関数は整数の引数timeを取り、指定された時間だけスリープ（待機）します。
-// 内部では、現在の時間を取得し、経過時間が指定された時間に達するまでループします。
 void	ft_sleep(int time)
 {
 	long	start;
@@ -28,8 +26,6 @@ void	ft_sleep(int time)
 	}
 }
 
-// 概要: t_philo型のポインターを引数として受け取り、哲学者の右側のフォークを決定します。
-// 最初の哲学者の場合は特別な処理を行い、それ以外の場合は標準的な計算を行います。
 int	get_right_fork(t_philo *philo)
 {
 	if (philo->id == 0)
@@ -38,8 +34,6 @@ int	get_right_fork(t_philo *philo)
 		return (philo->id - 1);
 }
 
-// 概要: t_philo型のポインターを引数として受け取り、哲学者が食事をする処理を行います。
-// determine_r_fork関数を呼び出して右側のフォークを決定し、ミューテックスを使用してフォークをロックします。
 int	eating(t_philo *philo)
 {
 	int	r_fork;
@@ -51,10 +45,13 @@ int	eating(t_philo *philo)
 	pthread_mutex_lock(&philo->tools->forks[philo->id]);
 	print_philo_status("has picked up a fork", philo->id, philo->tools, \
 				elapsed_time(philo->tools->start_time));
-	// philo->time_last_meal = get_ms();
 	set_m_t(philo);
-	if (0 < philo->tools->eat_up)
+	if (philo->c_meals != -1)
+	{
+		pthread_mutex_lock(&philo->tools->decrease);
 		philo->c_meals--;
+		pthread_mutex_unlock(&philo->tools->decrease);
+	}
 	print_philo_status("is eating", philo->id, philo->tools,
 		elapsed_time(philo->tools->start_time));
 	ft_sleep(philo->tools->time_eat);
@@ -80,4 +77,32 @@ void	*philo_life(void *arg)
 		ft_sleep(philo->tools->time_sleep);
 	}
 	return (NULL);
+}
+
+int	is_philo_dead(t_tools *tools)
+{
+	int		i;
+	int		meals;
+	long	diff_meal;
+
+	i = 0;
+	while (i < tools->num_philo)
+	{
+		pthread_mutex_lock(&tools->decrease);
+		diff_meal = get_ms() - read_m_t(&tools->philo[i]);
+		meals = tools->philo[i].c_meals;
+		pthread_mutex_unlock(&tools->decrease);
+		if (tools->time_dead < diff_meal || meals == 0)
+		{
+			change_end(tools);
+			if (tools->philo[i].c_meals != 0)
+			{
+				printf("%ld Philosopher %d has died\n",
+					elapsed_time(tools->start_time), tools->philo[i].id);
+			}
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }

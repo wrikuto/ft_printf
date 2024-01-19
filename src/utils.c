@@ -6,11 +6,11 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:56:55 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 12:02:12 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:09:24 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../inc/philo.h"
+#include "../inc/philo.h"
 
 int	join_threads(t_tools *tools)
 {

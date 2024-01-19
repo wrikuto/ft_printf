@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:03:14 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 12:12:38 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:32:11 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	is_philo_dead(t_tools *tools)
 		pthread_mutex_unlock(&tools->decrease);
 		if (tools->time_dead < diff_meal || meals == 0)
 		{
+			pthread_mutex_lock(&tools->decrease);
 			change_end(tools);
 			if (tools->philo[i].c_meals != 0)
 			{

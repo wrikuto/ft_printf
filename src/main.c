@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:49:17 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 12:12:07 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:33:57 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	while (is_philo_dead(&tools) == 0)
 		usleep(1000);
+	pthread_mutex_unlock(&tools.decrease);
 	join_threads(&tools);
 	free_philo_and_forks(&tools);
 	pthread_mutex_destroy(&tools.lock);

@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:03:14 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 12:01:58 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:12:38 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	ft_sleep(int time)
+static void	ft_sleep(int time)
 {
 	long	start;
 	long	elapsed;
@@ -26,7 +26,7 @@ void	ft_sleep(int time)
 	}
 }
 
-int	get_right_fork(t_philo *philo)
+static int	get_right_fork(t_philo *philo)
 {
 	if (philo->id == 0)
 		return (philo->tools->num_philo - 1);
@@ -34,7 +34,7 @@ int	get_right_fork(t_philo *philo)
 		return (philo->id - 1);
 }
 
-int	eating(t_philo *philo)
+static int	eating(t_philo *philo)
 {
 	int	r_fork;
 

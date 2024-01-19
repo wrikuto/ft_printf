@@ -6,13 +6,13 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:49:17 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 12:05:36 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:12:07 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	prepare_party(int argc, char **argv, t_tools *tools)
+static int	prepare_party(int argc, char **argv, t_tools *tools)
 {
 	if (argc != 5 && argc != 6)
 	{

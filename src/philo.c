@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:03:14 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 13:32:11 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:41:09 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ static int	get_right_fork(t_philo *philo)
 		return (philo->id - 1);
 }
 
-static int	eating(t_philo *philo)
+static void	eating(t_philo *philo)
 {
 	int	r_fork;
 
 	r_fork = get_right_fork(philo);
 	pthread_mutex_lock(&philo->tools->forks[r_fork]);
-	print_philo_status("has picked up a fork", philo->id, philo->tools, \
-				elapsed_time(philo->tools->start_time));
+	print_philo_status("has taken a fork", philo->id, philo->tools);
 	pthread_mutex_lock(&philo->tools->forks[philo->id]);
-	print_philo_status("has picked up a fork", philo->id, philo->tools, \
-				elapsed_time(philo->tools->start_time));
+	print_philo_status("has taken a fork", philo->id, philo->tools);
 	set_m_t(philo);
 	if (philo->c_meals != -1)
 	{
@@ -52,12 +50,11 @@ static int	eating(t_philo *philo)
 		philo->c_meals--;
 		pthread_mutex_unlock(&philo->tools->decrease);
 	}
-	print_philo_status("is eating", philo->id, philo->tools,
-		elapsed_time(philo->tools->start_time));
+	print_philo_status("is eating", philo->id, philo->tools);
 	ft_sleep(philo->tools->time_eat);
 	pthread_mutex_unlock(&philo->tools->forks[r_fork]);
 	pthread_mutex_unlock(&philo->tools->forks[philo->id]);
-	return (1);
+	return ;
 }
 
 void	*philo_life(void *arg)
@@ -69,11 +66,9 @@ void	*philo_life(void *arg)
 		usleep(philo->tools->time_eat * 1000);
 	while ((check_end(philo->tools) != 1) && (philo->c_meals != 0))
 	{
-		print_philo_status("is thinking", philo->id, philo->tools, \
-					elapsed_time(philo->tools->start_time));
+		print_philo_status("is thinking", philo->id, philo->tools);
 		eating(philo);
-		print_philo_status("is sleeping", philo->id, philo->tools, \
-					elapsed_time(philo->tools->start_time));
+		print_philo_status("is sleeping", philo->id, philo->tools);
 		ft_sleep(philo->tools->time_sleep);
 	}
 	return (NULL);
@@ -98,8 +93,8 @@ int	is_philo_dead(t_tools *tools)
 			change_end(tools);
 			if (tools->philo[i].c_meals != 0)
 			{
-				printf("%ld Philosopher %d has died\n",
-					elapsed_time(tools->start_time), tools->philo[i].id);
+				printf("%ld %d died\n", \
+						elapsed_time(tools->start_time), tools->philo[i].id);
 			}
 			return (1);
 		}

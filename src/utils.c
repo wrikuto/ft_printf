@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 18:56:55 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 12:09:24 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:41:23 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	free_philo_and_forks(t_tools *tools)
 	free(tools->forks);
 }
 
-void	print_philo_status(char *str, int id, t_tools *tools, long ms)
+void	print_philo_status(char *str, int id, t_tools *tools)
 {
 	pthread_mutex_lock(&(tools->lock));
 	if (!tools->end)
-		printf("%ldms %i %s\n", ms, id, str);
+		printf("%ld %i %s\n", elapsed_time(tools->start_time), id, str);
 	pthread_mutex_unlock(&(tools->lock));
 }

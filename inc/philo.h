@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:49:15 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 11:57:36 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:40:34 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,20 @@ typedef struct s_tools
 int		set_situation(char **arg, t_tools *tools);
 int		build_up(t_tools *tools);
 
+// ft_atoi.c
 int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+
+// philo.c
+int		is_philo_dead(t_tools *tools);
 void	*philo_life(void *tmp);
 
+// utils.c
 int		join_threads(t_tools *tools);
 void	free_philo_and_forks(t_tools *tools);
+void	print_philo_status(char *str, int id, t_tools *tools);
 
-int		is_philo_dead(t_tools *tools);
-
+// mutex.c
 int		check_end(t_tools *tools);
 void	change_end(t_tools *tools);
 void	set_m_t(t_philo *philo);
@@ -67,9 +73,5 @@ long	elapsed_time(long start);
 
 // mutex
 long	get_ms(void);
-
-// utils
-void	print_philo_status(char *str, int id, t_tools *tools, long ms);
-int		ft_isdigit(int c);
 
 #endif

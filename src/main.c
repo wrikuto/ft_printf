@@ -6,7 +6,7 @@
 /*   By: wrikuto <wrikuto@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:49:17 by wrikuto           #+#    #+#             */
-/*   Updated: 2024/01/19 13:33:57 by wrikuto          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:41:15 by wrikuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 	free_philo_and_forks(&tools);
 	pthread_mutex_destroy(&tools.lock);
 	pthread_mutex_destroy(&tools.eat);
+	pthread_mutex_destroy(&tools.decrease);
 	while (i < tools.num_philo)
 		pthread_mutex_destroy(&tools.forks[i++]);
 	return (0);
